@@ -240,7 +240,8 @@ public class MainActivity extends AppCompatActivity {
         stella_change = str.substring(4,7);
         Log.i(TAG, "Change2Detail: stella = "+stella_change);
 
-        Intent detailset = new Intent(this,Detail.class);
+//        Intent detailset = new Intent(this,Detail.class);
+        Intent detailset = new Intent(this,Fortune_Detail.class);
         detailset.putExtra("stella",stella_change);
         startActivityForResult(detailset, 3);
 

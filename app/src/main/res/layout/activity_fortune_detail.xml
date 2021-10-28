@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Detail">
+    tools:context=".Fortune_Detail">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -16,23 +16,29 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             />
-        <ListView
-            android:layout_margin="10dp"
-            android:id="@+id/list2"
+        <RelativeLayout
+            android:id="@+id/bot"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-
-            ></ListView>
-        <TextView
-            android:id="@+id/nodata"
-            android:text="No Data"
-            android:gravity="center"
+            android:layout_height="wrap_content">
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewpager2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tab_layout"/>
 
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabSelectedTextColor="@color/white"
+                app:tabRippleColor="@color/lightblue_1"
+                app:tabBackground="@color/blue_1"
+                android:layout_alignParentBottom="true"
+                />
+        </RelativeLayout>
 
 
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

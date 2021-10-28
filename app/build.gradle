@@ -30,6 +30,9 @@ android {
 }
 
 dependencies {
+    //滑动窗口
+    implementation 'com.android.support:support-v4:31.0.0'
+    implementation 'com.android.support:design:31.0.0'
     //动图加载
     implementation 'com.github.bumptech.glide:glide:4.4.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.4.0'

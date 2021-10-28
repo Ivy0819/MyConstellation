@@ -58,15 +58,17 @@ public class All_Stella extends AppCompatActivity implements AdapterView.OnItemC
 
         Log.i(TAG, "onItemClick: 监听到的stella_name="+stella_name);
 
-        Intent detailset = new Intent(this,Detail.class);
+        Intent detailset = new Intent(this,Fortune_Detail.class);
+
         detailset.putExtra("stella",stella_name);
+        Log.i(TAG, "onItemClick: 准备发送至FortuneDetail页面");
         startActivityForResult(detailset, 3);
+        finish();
 
     }
 
     public void homeClick(View btn){
-        Intent goHome = new Intent(this,MainActivity.class);
-        startActivity(goHome);
+        finish();
     }
 
     public void backClick(View btn){

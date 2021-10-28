@@ -1,5 +1,6 @@
 package com.swufestu.myconstellation;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
@@ -18,7 +19,8 @@ public class MyThread_getFortune implements Runnable{
 
     private static final String TAG = "ThreadPage";
     private Handler handler_show;
-    ArrayList<Item> listItems = new ArrayList<Item>();
+    Bundle bundle = new Bundle();
+    HashMap<String,ArrayList<Item>> map = new HashMap<String,ArrayList<Item>>();
     public String Stella;
     private Document doc;
     private Elements tables;
@@ -57,27 +59,36 @@ public class MyThread_getFortune implements Runnable{
         }
         Log.i(TAG, "run: 线程运行");
 
-        try {
-            doc = Jsoup.connect("https://www.xzw.com/fortune/"+Stella).get();
-            tables = doc.getElementsByTag("p");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        for (int i =0;i<tables.size();i++){
-            String info = tables.get(i).getElementsByTag("strong").text();
-            String intro;
-            if (info.equals("综合运势")){
-                String intro_temp = tables.get(i).getElementsByTag("span").text();
-                intro = intro_temp.substring(0,intro_temp.length()-5);
-            }
-            else {
-                intro = tables.get(i).getElementsByTag("span").text();
-            }
-            Item item = new Item(" "+info+" ",intro);
-            listItems.add(item);
+        for (int i = 0;i < 3;i++){
+            ArrayList<Item> listItems = new ArrayList<Item>();
 
+
+            try {
+                doc = Jsoup.connect("https://www.xzw.com/fortune/"+Stella+"/"+i).get();
+
+                tables = doc.getElementsByTag("p");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            for (int j =0;j<tables.size();j++){
+                String info = tables.get(j).getElementsByTag("strong").text();
+                String intro;
+                if (info.equals("综合运势")){
+                    String intro_temp = tables.get(j).getElementsByTag("span").text();
+                    intro = intro_temp.substring(0,intro_temp.length()-5);
+                }
+                else {
+                    intro = tables.get(j).getElementsByTag("span").text();
+                }
+                Item item = new Item(" "+info+" ",intro);
+                listItems.add(item);
+
+            }
+            map.put("Array"+i,listItems);
         }
-        Message msg_show = handler_show.obtainMessage(9,listItems);
+
+
+        Message msg_show = handler_show.obtainMessage(9,map);
         handler_show.sendMessage(msg_show);
         Log.i(TAG, "run: 数据已发送给主线程DetailPage");
 

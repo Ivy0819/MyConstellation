@@ -13,10 +13,10 @@
         android:theme="@style/Theme.MyConstellation"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".All_Stella"
+            android:name=".Fortune_Detail"
             android:exported="true" />
         <activity
-            android:name=".Detail"
+            android:name=".All_Stella"
             android:exported="true" />
         <activity
             android:name=".BirthSet"
