@@ -101,8 +101,7 @@ public class Fortune_Detail extends AppCompatActivity {
 
     }
     public void homeClick(View btn){
-        Intent goHome = new Intent(this,MainActivity.class);
-        startActivity(goHome);
+        finish();
     }
 
     public void backClick(View btn){
