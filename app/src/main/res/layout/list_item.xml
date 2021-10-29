@@ -14,13 +14,13 @@
             android:text="Hello"
             android:background="@color/blue_1"
             android:textColor="@color/white"
-            android:textSize="25sp"/>
+            android:textSize="20sp"/>
         <TextView
             android:id="@+id/itemDetail"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Detail"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="10dp"/>
 
